@@ -8,6 +8,10 @@ on:
     branches:
       - "main"
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: true
+
 jobs:
   run:
     name: Python ${{ matrix.python-version }} on ${{ startsWith(matrix.os, 'macos-') && 'macOS' || startsWith(matrix.os, 'windows-') && 'Windows' || 'Linux' }}
@@ -28,6 +32,9 @@ jobs:
 
       - name: Ensure latest pip
         run: python -m pip install --upgrade pip
+
+      - name: Install Hatch
+        run: pip install hatch
 
       - name: Install ourself
         run: |
