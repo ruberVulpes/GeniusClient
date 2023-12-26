@@ -14,7 +14,7 @@ requires-python = ">=3.9"
 authors = [
     { name = "William Fox", email = "william@rubervulpes.com" },
 ]
-description = "A Python SDK for the Genius API"
+description = "A Python Client for the Genius API"
 readme = "README.md"
 license = { file = "LICENSE.txt" }
 keywords = ["Genius", "API"]
