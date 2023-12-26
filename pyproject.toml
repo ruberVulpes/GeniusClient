@@ -1,0 +1,51 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "genius_client"
+dynamic = ["version"]
+dependencies = [
+    "requests",
+    "pydantic",
+    "pytest"
+]
+requires-python = ">=3.9"
+authors = [
+    { name = "William Fox", email = "william@rubervulpes.com" },
+]
+description = "A Python SDK for the Genius API"
+readme = "README.md"
+license = { file = "LICENSE.txt" }
+keywords = ["Genius", "API"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "License :: OSI Approved :: MIT License",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+[project.urls]
+"Genius API" = "https://docs.genius.com"
+
+[tool.hatch.version]
+path = "src/genius_client/__init__.py"
+
+[tool.hatch.build.targets.sdist]
+exclude = [
+    "/.github",
+    "/docs",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/genius_client"]
+
+[tool.black]
+line_length = 160
+
+[tool.mypy]
+plugins = ["pydantic.mypy"]
