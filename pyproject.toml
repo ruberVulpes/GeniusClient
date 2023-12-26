@@ -30,6 +30,8 @@ classifiers = [
 ]
 
 [project.urls]
+Homepage = "https://github.com/ruberVulpes/GeniusClient"
+Issues = "https://github.com/ruberVulpes/GeniusClient/issues"
 "Genius API" = "https://docs.genius.com"
 
 [tool.hatch.version]
