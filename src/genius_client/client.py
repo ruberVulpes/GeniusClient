@@ -109,6 +109,3 @@ class GeniusClient(requests.Session):
         return hash(self.base_url + self.access_token)
 
 
-if __name__ == "__main__":
-    client = GeniusClient()
-    res = client.account()
