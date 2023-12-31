@@ -82,7 +82,7 @@ class Artist(GeniusBaseModel):
         return super().__repr__().format(f"name='{self.name}'")
 
 
-class CustomPerformance(BaseModel):
+class Performance(BaseModel):
     label: str
     artists: list[Artist]
 
@@ -100,6 +100,14 @@ class Album(GeniusBaseModel):
 
     def __repr__(self):
         return super().__repr__().format(f"full_title='{self.full_title}'")
+
+
+class FullAlbum(Album, GeniusBaseModel):
+    name: str
+    release_date: str
+    cover_arts: list[dict]
+    description_annotation: dict
+    song_performances: list[Performance]
 
 
 class AnnotatableSong(GeniusBaseModel):
@@ -141,7 +149,7 @@ class FullSong(Song, GeniusBaseModel):
     media: list[dict]
     producer_artists: list[Artist]
     writer_artists: list[Artist]
-    custom_performances: list[CustomPerformance]
+    custom_performances: list[Performance]
     song_relationships: list[dict]
 
 

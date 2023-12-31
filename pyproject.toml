@@ -29,6 +29,10 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
 ]
 
+[project.scripts]
+genius-client-token-helper = "genius_client.oauth2:cli"
+
+
 [project.urls]
 Homepage = "https://github.com/ruberVulpes/GeniusClient"
 Issues = "https://github.com/ruberVulpes/GeniusClient/issues"
@@ -49,5 +53,41 @@ packages = ["src/genius_client"]
 [tool.black]
 line_length = 160
 
+
+[tool.coverage.paths]
+genius_client = ["src/genius_client", "*/genius_client/src/genius_client"]
+tests = ["tests", "*/genius_client/tests"]
+
+
+[tool.coverage.run]
+source_pkgs = ["genius_client", "tests"]
+branch = true
+parallel = true
+
+[tool.coverage.report]
+exclude_lines = [
+    "no cov",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+]
+
 [tool.mypy]
 plugins = ["pydantic.mypy"]
+
+[tool.ruff]
+unfixable = [
+    # Don't touch unused imports
+    "F401",
+]
+[tool.ruff.isort]
+known-first-party = ["genius_client"]
+
+[tool.ruff.flake8-quotes]
+inline-quotes = "double"
+
+[tool.ruff.flake8-tidy-imports]
+ban-relative-imports = "all"
+
+[tool.ruff.per-file-ignores]
+# Tests can use relative imports and assertions
+"tests/**/*" = ["TID252", "S101"]
